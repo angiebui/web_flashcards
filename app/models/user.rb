@@ -2,8 +2,8 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
   validates :email, :uniqueness => true
-  validates :name, :length {:minimum => 3}
-  validates :password, :length {:minimum => 6}
+  validates :name, :length => {:minimum => 3}
+  validates :password, :length => {:minimum => 6}
 
   has_many :decks, :through => :rounds
   has_many :rounds 

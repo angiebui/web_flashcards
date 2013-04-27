@@ -5,8 +5,20 @@ helpers do
     end
   end
 
-  # Returns true if current_user exists, false otherwise
   def logged_in?
     !current_user.nil?
   end
+
+  def current_card
+    if session[:current_card]
+      @current_card ||= Card.find(session[:current_card])
+    end
+  end
+
+  def current_game
+    if session[:current_game]
+      @current_game ||= Round.find(session[:current_game].id)
+    end
+  end
+
 end

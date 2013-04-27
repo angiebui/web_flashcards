@@ -1,19 +1,25 @@
-get '/game/:id' do
-  @current_game = Round.new
-  @current_game.user_id = session[:id] 
-  @current_game.deck_id = (params[:id])
-  @deck = cards.find_by_deck_id(@current_game.deck_id)
-  #redirect "/game/card/#{@cards.first}"
-  show_cards :erb
+get '/deck/:id' do
+  session[:current_game] = Round.create(:user_id => session[:id], :deck_id => params[:id])
+  @deck = Deck.find(params[:id]).cards
+
+  @card = Card.find_by_deck_id(params[:id])
+  session[:current_card] = @card.id
+
+  erb :show_cards
 end
 
-get '/game/check_answer/' do
-  Round.correct if user_answer(params[:answer]) == current_card.answer
-  
-  redirect '/game/card/:id' 
+post '/deck/check' do
+  if params[:answer] == current_card.answer
+    current_game.increment_score!
+    @message = "Correct!"
+  else
+    @message = "Incorrect. Answer is #{current_card.answer}"
+  end
+    session[:current_card] = current_card.id + 1
+    erb :show_cards
 end
 
 
-get '/game/card/:id' do
-  show_cards :erb
+get '/deck/card/:id' do
+  erb :show_cards
 end

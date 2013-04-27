@@ -1,13 +1,11 @@
-<div><%= current_card.question %></div><br>
-
-<p><% if @message %></p>
-  <%= @message %>
-<% end %>
-
-<form action="/deck/check" method="post">
+<div><% @deck.each_with_index do |card, index| %></div>
+  <p><%= card.question %></p> 
+  <form action="/deck/check" method="post">
     <label for="answer">Answer:</label>
-    <input type="text" name="answer" placeholder="Enter your answer..."><br />
-    <input type="submit" value="Submit!">
-</form>
+    <input type="text" name="<%=card.id%>" placeholder="Enter your answer..."><br/>
+  <% end %>
+   <input type="submit" value="Submit!">
+  </form>
 
-<p>Your Score:<%= current_game.score %></p>
+
+

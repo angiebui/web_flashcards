@@ -5,9 +5,10 @@ class DecksRoundsCards < ActiveRecord::Migration
     end
 
     create_table :rounds do |t|
-      t.integer :score
+      t.integer :score, :default => 0
       t.integer :user_id
       t.integer :deck_id
+      
     end
 
     create_table :cards do |t|

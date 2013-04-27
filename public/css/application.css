@@ -11,3 +11,7 @@ th {
 #errors {
   color: red;
 }
+
+#profile_name, #profile_email {
+  color: blue;
+}

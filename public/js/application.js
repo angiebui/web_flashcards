@@ -6,7 +6,6 @@ $(document).on('ready', function() {
   var currentQuestion = 0;
 
   //Store the selector in a variable.
-  //It is good practice to prefix jQuery selector variables with a $
   $questions = $('.flash');
   console.log($questions);
 
@@ -53,10 +52,6 @@ $(document).on('ready', function() {
   	$('.flip').find('.card').removeClass('flipped')
   	$(this).closest('.check-answer').hide()
 
-    //fade out the current question,
-    //putting a function inside of fadeOut calls that function 
-    //immediately after fadeOut is completed, 
-    //this is for a smoother transition animation
     $($questions.get(currentQuestion)).hide()
 
     //increment the current question by one

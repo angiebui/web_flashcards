@@ -1,5 +1,4 @@
 get '/' do
-  @rounds = Round.order("score DESC")
 
   erb :index
 end

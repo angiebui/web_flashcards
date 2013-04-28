@@ -1,11 +1,39 @@
-<div><% @deck.each_with_index do |card, index| %></div>
-  <p><%= card.question %></p> 
-  <form action="/deck/check" method="post">
-    <label for="answer">Answer:</label>
-    <input type="text" name="<%=card.id%>" placeholder="Enter your answer..."><br/>
+<section class="top">
+</section>
+<section>
+  <% @deck.each do |card| %>
+  <div class="flash">
+  	<div class="flip"> 
+		  <div class="card">
+			  <div class="face front"> 
+				  <p class="question"><%= card.question %></p>
+				</div>
+				<div class="face back"> 
+				  <p class="answer"><%= card.answer %></p>
+			  </div>
+			</div>
+	  </div>
+    <div class="answer-form">
+    	<div class="row">
+        <div class="large-4 large-offset-4 columns">
+			    <form action="/deck/check" method="POST">
+				    <label for="<%=card.id%>">Answer:</label>
+				    <input type="text" name="<%=card.id%>" placeholder="Answer at your own risk..."><br/>
+				    <button type="submit" class="button">FLIP</button>
+				  </form>
+				</div>
+			</div>
+		</div>
+	</div>
   <% end %>
-   <input type="submit" value="Submit!">
-  </form>
-
-
-
+  <div class="check-answer">
+  	<div class="row">
+      <div class="large-4 large-offset-4 columns">
+		    <p class="response"></p>
+		    <p class="score"></p>
+		    <button id="next">Next Question</button>
+		  </div>
+		</div>
+  </div>
+  <div class="game-over">GAME OVER!</div>
+</section>

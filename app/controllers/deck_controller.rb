@@ -18,8 +18,8 @@ post '/deck/check' do
     	@check = false
     end
   end
-
-  result = {:score => @round.score, :check => @check}
   
+  result = {:score => @round.score, :check => @check}
+  @round.save
   result.to_json
 end

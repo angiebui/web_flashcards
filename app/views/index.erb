@@ -1,30 +1,54 @@
 <div class="container">
-    <header><h1>RARA Flashcards</h1></header>
+  <header><h1>RARA Flashcards</h1></header>
 
-     <p id="errors"><% if @errors %>
-      <% @errors.each do |error| %> 
-        <%= error %><br>
-      <% end %></p>
+  <p id="errors"><% if @errors %>
+    <% @errors.each do |error| %> 
+    <%= error %><br>
+    <% end %></p>
     <% end %></p>
 
-    <p><h4>Login</h4></p> 
-    <form action="/login" method="post">
-      Email: <input type="text" placeholder ="robert@example.com" name="email"><br>
-      Password: <input type="password" name="password"><br>
-      <input class="login" type="submit" value="Submit"><br>
-    </form>
+    <div class="logged in">
 
-    <p><h4>Sign-up</h4></p>
-    <form action="/signup" method="post">
-      Name: <input type="text" placeholder ="Robert Kim" name="name"><br>
-      Email: <input type="text" placeholder ="robert@example.com" name="email"><br>
-      Password: <input type="password" name="password"><br>
-      <input class="signup" type="submit" value="Submit"><br>
-    </form>
+      <% if logged_in? %>
+      <a href="/user/<%=current_user.id%>">Your Profile</a><br>
+      <br>
+      <% @rounds.each do |round| %>
+      <ol> <li> User <a href="/user/<%=round.user.id%>"> <%=round.user.name.capitalize%></a></li> Deck: <%= round.deck.category %> Score <%= round.score
+      %> </ol>    
+      <% end %>
 
-    <% @rounds.each do |round| %>
-    <ul>
-      <li><%=User.find(round.user_id).name%><%= round.score %></li>
-    </ul>
+      <br>
+      <h3>Play a Game!<h3>
+        <% @decks.each do |deck| %>  
+        <ol> <li><a href="/deck/<%=deck.id%>"> <%=deck.category.capitalize%></a></li> </ol>
+        <% end %>
+
+      </div>
+
+
+      <div class="login container">
+        
+        <form action="/logout" method="post">
+          <input class="logout" type="submit" value="Logout"><br>
+
+        </form>
+      </div>
+      <% else %>
+      <p><h4>Login</h4></p> 
+      <form action="/login" method="post">
+        Email: <input type="text" placeholder ="robert@example.com" name="email"><br>
+        Password: <input type="password" name="password"><br>
+        <input class="login" type="submit" value="Submit"><br>
+      </form>
+
+      <p><h4>Sign-up</h4></p>
+      <form action="/signup" method="post">
+        Name: <input type="text" placeholder ="Robert Kim" name="name"><br>
+        Email: <input type="text" placeholder ="robert@example.com" name="email"><br>
+        Password: <input type="password" name="password"><br>
+        <input class="signup" type="submit" value="Submit"><br>
+      </form>
+
     <% end %>
 </div>
+

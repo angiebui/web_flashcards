@@ -1,7 +1,16 @@
 <div class="container">
+
+
+  <% @rounds.each do |round| %>   <li><a href="'/user/<%=round.user.id%>"> <%=round.user.name.capitalize%></a></li> <%= round.deck.category %> <%= round.score
+%>      <% end %>
+
+<br>
   <a href="/deck/1">Play Game!</a>
-  <a href="/user/<%=current_user.id%>">Profile</a><br>
-  <form action="/logout" method="post">
+  <a href="/userround.deck.category/<%=current_user.id%>">Your Profile</a><br>
+    <form action="/logout" method="post">
     <input class="logout" type="submit" value="Logout"><br>
+
   </form>
 </div>
+
+

@@ -27,6 +27,6 @@ end
 
 post '/percent-score' do
   @round = Round.find(current_game)
-  @round.score = params[:score].to_i.round(2) 
+  @round.score = params[:score].to_f.round(2) 
   @round.save
 end

@@ -10,7 +10,7 @@ Card.create(:question => "What shade of orange is the Golden Gate Bridge?", :ans
 Card.create(:question => "What San Francisco stree is known as the crookedest street in the world?", :answer => "Lombard", :deck_id => 2)
 Card.create(:question => "The Beatles' final live concert took place on 29 August 1966 at what San Francisco Stadium?", :answer => "Candlestick Park", :deck_id => 2)
 Card.create(:question => "What popular clothing item was invented in San Francisco for Gold Rush miners across California?", :answer => "Jeans", :deck_id => 2)
-Card.create(:question => "In what year was San Francisco obliterated by an earthquake, along with a massive fire", :answer => "1906", :deck_id => 2)
+Card.create(:question => "In what year was San Francisco obliterated by an earthquake, along with a massive fire", :answer => "1906", :deck_id => 2 )
 
 Deck.create(:category => "Video Game Trivia")
 Card.create(:question => "Super Mario Brothers 2 was deemed too hard for American gamers, what modified game was released in its place?", :answer => "Doki Doki Panic", :deck_id => 3)

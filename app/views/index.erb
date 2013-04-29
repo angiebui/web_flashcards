@@ -12,15 +12,17 @@
       <% if logged_in? %>
       <a href="/user/<%=current_user.id%>">Your Profile</a><br>
       <br>
-      <% @rounds.each do |round| %>
-      <ol> <li> User <a href="/user/<%=round.user.id%>"> <%=round.user.name.capitalize%></a></li> Deck: <%= round.deck.category %> Score <%= round.score
-      %> </ol>    
+
+      <% @rounds.each_with_index do |round, index| %>
+      <ul> 
+       <li><%= index + 1 %>. <a href="/user/<%=round.user.id%>"><%=round.user.name.capitalize%></a></li> Deck: <%= round.deck.category %> Score <%= round.score
+      %> </ul>    
       <% end %>
 
       <br>
       <h3>Play a Game!<h3>
-        <% @decks.each do |deck| %>  
-        <ol> <li><a href="/deck/<%=deck.id%>"> <%=deck.category.capitalize%></a></li> </ol>
+        <% @decks.each_with_index do |deck, index| %>  
+        <ul> <li><%= index + 1 %>. <a href="/deck/<%=deck.id%>"> <%=deck.category.capitalize%></a></li> </ul>
         <% end %>
 
       </div>
@@ -51,4 +53,5 @@
 
     <% end %>
 </div>
+
 

@@ -35,7 +35,18 @@ $(document).on('ready', function() {
 
       //Update and show check-answer div
       if (currentQuestion == totalQuestions - 1) {
+        var percentScore = (result.score / totalQuestions) * 100
+        var build_html = "<h3 class='score'>Score: " + percentScore + "%</h3>"   
+        $('.game-over').prepend(build_html)
         $('.game-over').show()
+
+        $.ajax({
+          url: '/percent-score',
+          method: 'POST',
+          data: {"score": percentScore}
+        }).done(function(data){
+          console.log(data)
+        });
       } else {
         $('.response').html(result.check)
         $('.score').html(result.score);

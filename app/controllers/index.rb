@@ -1,6 +1,7 @@
 get '/' do
   @rounds = Round.order("score DESC").limit(5)
   @decks = Deck.all
+
   erb :index
 end
 
@@ -8,13 +9,13 @@ post '/login' do
   @rounds = Round.order("score DESC").limit(5)
   @decks = Deck.all
  user = User.authenticate(params[:email], params[:password])
- if user
-  session[:id] = user.id
-  erb :index
-else
-  @errors = ["Not a valid email or password"]
-  erb :index
-end
+   if user
+    session[:id] = user.id
+    erb :index
+  else
+    @errors = ["Not a valid email or password"]
+    erb :index
+  end
 end
 
 post '/signup' do
@@ -32,6 +33,6 @@ end
 
 post '/logout' do
   session[:id] = nil 
-  redirect '/'
+  erb :index
 end
 

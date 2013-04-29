@@ -1,0 +1,9 @@
+<% if logged_in? %> 
+  <ul> 
+    <li href="/">RARA</li>
+    <li href="/user/<%= current_user.id %>">Profile</li>
+    <li href="/logout">Sign Out</li>
+  </ul>
+<% end %>
+
+

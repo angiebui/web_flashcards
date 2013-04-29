@@ -74,3 +74,11 @@ button {
 .game-over {
   display: none;
 }
+
+.game-name {
+  float: left;
+}
+
+.game-score {
+  float: left;
+}

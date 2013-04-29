@@ -20,11 +20,5 @@
       Email: <input type="text" placeholder ="robert@example.com" name="email"><br>
       Password: <input type="password" name="password"><br>
       <input class="signup" type="submit" value="Submit"><br>
-    </form>
-
-    <% @rounds.each do |round| %>
-    <ul>
-      <li><%=User.find(round.user_id).name%><%= round.score %></li>
-    </ul>
-    <% end %>
+    </form>x
 </div>

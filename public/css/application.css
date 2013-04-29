@@ -1,24 +1,75 @@
 body {
   font-family: 'Oswald', sans-serif;
   color: #222;
-  background: #ddd; 
+  background: #fff; 
 }
 button {
 	background: #e2674a;
 }
-.top {
-  height:200px;
+li {
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Righteous', cursive;
+}
+.header {
+  height:350px;
   background: #e2674a;
 }
-.top h1 {
-  color: #ddd;
+.header h1 {
+  font-family: 'Righteous', cursive;
   text-align: center;
-  font-size: 3em;
-  font-weight: 200;
-  text-shadow: 1px 1px #ccc;
+  font-size: 200px;
+  font-weight: bold;
+  margin-top: 0;
+  line-height: 1;
+  /*text-shadow: 1px 1px #ccc;*/
 }
-.flash {
-
+.margin-top {
+  margin-top: -125px;
+}
+.jumbotron {
+  margin-top: -125px;
+}
+.fab {
+  text-align: center;
+  text-shadow: 1px 1px #222;
+  background-image: url('../img/fab.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: #222;
+}
+.fab h2 {
+  color: #e2674a;
+}
+.position1 {
+  color: #eee;
+  font-size: 1.6875em;
+  font-weight: bold;
+}
+.position2,
+.position3 {
+  font-size: 1.4375em;
+  color: #ccc;
+}
+.position4,
+.position5 {
+  font-size: 1.125em;
+  color: #aaa;
+}
+.panel,
+.callout {
+  min-height: 200px;
+}
+#sign-up-form {
+  display: none;
+}
+.flasher {
+  text-align: center;
 }
 .flip {
   font-family: 'Permanent Marker', cursive;
@@ -70,15 +121,24 @@ button {
 }
 .check-answer {
   display: none;
+  text-align: center;
 }
+
 .game-over {
   display: none;
 }
-
-.game-name {
-  float: left;
+.decks {
+  background: #ccc;
+  padding: 20px 0 10px 0;
 }
-
-.game-score {
-  float: left;
+.footer {
+  background: #222;
+}
+.created {
+  font-family: 'Righteous', cursive;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px 0;
+  line-height: 1;
 }

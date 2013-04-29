@@ -15,9 +15,8 @@ $(document).on('ready', function() {
   //Show the first question
   $($questions.get(currentQuestion)).show();
 
-	$('.button').on('click', function(e) {
+	$('.rara').on('click', function(e) {
 		e.preventDefault();
-
 		$(this).closest('form').hide();
 
 		// $('.answer-form').toggle();
@@ -49,7 +48,7 @@ $(document).on('ready', function() {
         });
       } else {
         $('.response').html(result.check)
-        $('.score').html(result.score);
+        $('.score').html("Points: " + result.score);
         $('.check-answer').show();
       }
 		}).fail(function(jqXHR, textStatus, errorThrown) {
@@ -76,5 +75,12 @@ $(document).on('ready', function() {
       //otherwise show the next question
       $($questions.get(currentQuestion)).show();
     }
+  });
+
+  $('#sign-up').on('click', function(e) {
+    e.stopPropagation();
+    $(this).closest('div').hide();
+    $('#login-form').hide();
+    $('#sign-up-form').fadeIn();
   });
 });

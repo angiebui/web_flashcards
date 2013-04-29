@@ -1,57 +1,90 @@
-<div class="container">
-  <header><h1>RARA Flashcards</h1></header>
-
-  <p id="errors"><% if @errors %>
-    <% @errors.each do |error| %> 
-    <%= error %><br>
-    <% end %></p>
-    <% end %></p>
-
-    <div class="logged in">
-
-      <% if logged_in? %>
-      <a href="/user/<%=current_user.id%>">Your Profile</a><br>
-      <br>
-
-      <% @rounds.each_with_index do |round, index| %>
-      <ul> 
-       <li><%= index + 1 %>. <a href="/user/<%=round.user.id%>"><%=round.user.name.capitalize%></a></li> Deck: <%= round.deck.category %> Score <%= round.score
-      %> </ul>    
-      <% end %>
-
-      <br>
-      <h3>Play a Game!<h3>
-        <% @decks.each_with_index do |deck, index| %>  
-        <ul> <li><%= index + 1 %>. <a href="/deck/<%=deck.id%>"> <%=deck.category.capitalize%></a></li> </ul>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="row">
+      <div class="jumbotron large-6 columns">
+        <div class="panel fab">
+          <% if @top_rounds %>
+          <h2><i class="icon-trophy"></i> Fab Five</h2>
+          <hr>
+          <ul>
+          <% @fab_five.each_with_index do |fab, index| %>
+            <li class="position<%= index + 1 %>"><%= "#{index + 1}. #{fab[:player]} - #{fab[:deck]} - #{fab[:score]}" %>%</li>
+          <% end %>
+        </ul>
+          <% else %>
+            <h3>No one has played our game yet.. Sigh..</h3>
+          <% end %>
+        </div>
+      </div>
+      <div class="large-6 columns margin-top">
+        <% if session[:valid] %>
+        <div class="panel" id="profile">
+          <h4><i class="icon-user"></i> <%= session[:user_name] %> <small><%= session[:user_email] %></small></h4>
+          <hr>
+          <h5>Recent Games:</h5>
+          <ul>
+          <% @user_stats.each do |stat| %>
+            <li><%= "#{stat[:deck]} - #{stat[:score]}" %>%</li>
+          <% end %>
+        </ul>
+        </div>
+        <% else %>
+        <div class="panel" id="login-form">
+          <h4><i class="icon-share-alt"></i> Login</h4>
+          <hr>
+          <form action="/login" method="POST">
+            <label for="email">Email:</label>
+            <input type="text" name="email">
+            <label for="password">Password:<label>
+            <input type="password" name="password">
+            <input class="button" type="submit" value="LOGIN">
+          </form>
+        </div>
+        <div class="panel flasher">
+          <h2>Not a "RARA" guy!?</h2>
+          <button id="sign-up">SIGN UP NOW</button>
+          <p>Let us change that!</p>
+        </div>
+        <div class="panel" id="sign-up-form">
+          <h4><i class="icon-edit"></i> Sign up</h4>
+          <hr>
+          <form action="/signup" method="POST">
+            <label for="email">Name:</label>
+            <input type="text" name="name">
+            <label for="email">Email:</label>
+            <input type="text" name="email">
+            <label for="password">Password:<label>
+            <input type="password" name="password">
+            <input class="button" type="submit" value="SIGN UP">
+          </form>
+        </div>
         <% end %>
-
       </div>
-
-
-      <div class="login container">
-        
-        <form action="/logout" method="post">
-          <input class="logout" type="submit" value="Logout"><br>
-
-        </form>
-      </div>
-      <% else %>
-      <p><h4>Login</h4></p> 
-      <form action="/login" method="post">
-        Email: <input type="text" placeholder ="robert@example.com" name="email"><br>
-        Password: <input type="password" name="password"><br>
-        <input class="login" type="submit" value="Submit"><br>
-      </form>
-
-      <p><h4>Sign-up</h4></p>
-      <form action="/signup" method="post">
-        Name: <input type="text" placeholder ="Robert Kim" name="name"><br>
-        Email: <input type="text" placeholder ="robert@example.com" name="email"><br>
-        Password: <input type="password" name="password"><br>
-        <input class="signup" type="submit" value="Submit"><br>
-      </form>
-
-    <% end %>
+    </div>
+  </div>
 </div>
-
-
+<section class="decks">
+  <div class="row">
+    <div class="large-4 columns">
+      <a href="/deck/1">
+        <div class="panel callout">
+          <h2>RARA</h2>
+        </div>
+      </a>
+    </div>
+    <div class="large-4 columns">
+      <a href="/deck/1">
+        <div class="panel callout">
+          <h2>RARA</h2>
+        </div>
+      </a>
+    </div>
+    <div class="large-4 columns">
+      <a href="/deck/1">
+        <div class="panel callout">
+          <h2>RARA</h2>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

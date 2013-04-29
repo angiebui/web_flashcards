@@ -16,10 +16,10 @@
     <div class="answer-form">
     	<div class="row">
         <div class="large-4 large-offset-4 columns">
-			    <form action="/deck/check" method="POST">
+			    <form action="/deck/check" method="POST" class="panel">
 				    <label for="<%=card.id%>">Answer:</label>
 				    <input type="text" name="<%=card.id%>" placeholder="Answer at your own risk..."><br/>
-				    <button type="submit" class="button">FLIP</button>
+				    <button type="submit" class="button rara" id="#submit-answer">FLIP</button>
 				  </form>
 				</div>
 			</div>
@@ -28,8 +28,8 @@
   <% end %>
   <div class="check-answer">
   	<div class="row">
-      <div class="large-4 large-offset-4 columns">
-		    <p class="response"></p>
+      <div class="large-4 large-offset-4 columns panel">
+		    <h3 class="response"></h3>
 		    <p class="score"></p>
 		    <button id="next">Next Question</button>
 		  </div>
@@ -38,7 +38,6 @@
   <div class="row">
     <div class="large-4 large-offset-4 columns">
       <div class="game-over">
-        <a href="/user/<%= current_user.id %>"> See all Stats</a><br>
         <a href="/">Back to Home</a>
       </div>
     </div>

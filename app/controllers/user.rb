@@ -8,10 +8,10 @@ end
 
 get '/home' do
   if logged_in? 
-   erb :decks
- else
-   @errors = ["You must login or signup to enter"]
-   erb :index
- end
+    erb :decks
+  else
+    @errors = ["You must login or signup to enter"]
+    erb :index
+  end
 end
 

@@ -14,6 +14,4 @@ helpers do
       @current_game ||= Round.find(session[:current_game])
     end
   end
-
 end
-

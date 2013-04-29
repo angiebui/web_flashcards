@@ -10,13 +10,13 @@ get '/deck/:id' do
 end
 
 post '/deck/check' do
-  @round = Round.find(current_game)
-  params.each do |k, v| 
+  @round = Round.find(session[:current_game])
+  params.each do |k, v|
     if Card.find(k.to_i).answer.strip.downcase == v.downcase
     	@round.increment_score!
-    	@check = "Correct"
+    	@check = "Correct!!"
     else
-    	@check = "Incorrect"
+    	@check = "Incorrect.."
     end
   end
 

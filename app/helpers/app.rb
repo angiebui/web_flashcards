@@ -1,7 +1,7 @@
 helpers do
   def current_user
-    if session[:id]
-      @current_user ||= User.find_by_id(session[:id])
+    if session[:user_id]
+      @current_user ||= User.find_by_id(session[:user_id])
     end
   end
 
@@ -15,3 +15,5 @@ helpers do
     end
   end
 end
+
+

@@ -1,12 +1,12 @@
 require 'json'
 
 get '/deck/:id' do
-  @deck = Deck.find(params[:id]).cards
-  session[:game_length] = @deck.length
-  round = Round.create(:user_id => session[:id], :deck_id => params[:id])
-  session[:current_game] = round.id
-  
-  erb :show_cards
+    @deck = Deck.find(params[:id]).cards
+    session[:game_length] = @deck.length
+    round = Round.create(:user_id => session[:user_id], :deck_id => params[:id])
+    session[:current_game] = round.id
+    
+    erb :show_cards
 end
 
 post '/deck/check' do
